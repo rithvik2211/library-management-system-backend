@@ -9,7 +9,7 @@ const __dirname = path.resolve();
 dotenv.config({ path: path.resolve(__dirname, "./.env") });
 
 
-
+// connecting to db
 pool.connect((err, client, release) => {
     if (err) {
         return console.error("Error acquiring client", err.stack);
