@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  librarymanagement:
+    image: librarymanagement
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    env_file:
+    - .env
+    ports:
+      - 3000:3000
