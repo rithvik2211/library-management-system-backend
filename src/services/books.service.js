@@ -6,7 +6,9 @@ import { AppError } from "../utils/customError.js";
 export const getAllBookService = async (body) => {
 
     try {
-        const result = await getAllBooks();
+        const { title } = body;
+
+        const result = await getAllBooks({ title });
         const data = {
             data: result.rows,
             count: result.rowCount

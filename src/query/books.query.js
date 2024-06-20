@@ -6,12 +6,15 @@ import { AppError } from "../utils/customError.js";
 export const getAllBooks = async (data) => {
 
     try {
+        let { title } = data;
+        if (!title) title = '';
         const query = {
-            text: `SELECT * FROM BOOKS;`
+            text: `SELECT * FROM BOOKS WHERE title LIKE '%${title}%';`,
         };
         const result = await pool.query(query);
         return result;
     } catch (error) {
+        console.log(error);
         throw new AppError('Db error', 500);
     }
 };
