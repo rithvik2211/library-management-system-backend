@@ -55,7 +55,7 @@ export const updateBookController = async (req, res, next) => {
         const body = req.body;
 
         const result = await updateBookService(body);
-        return res.status(201).json({
+        return res.status(200).json({
             success: true,
             message: "Book updated",
             count: result.count,
@@ -72,7 +72,7 @@ export const deleteBookController = async (req, res, next) => {
         const body = req.body;
 
         const result = await deleteBookService(body);
-        return res.status(201).json({
+        return res.status(204).json({
             success: true,
             message: "Book deleted",
         });

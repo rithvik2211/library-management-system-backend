@@ -3,6 +3,7 @@ import app from "./app.js";
 import dotenv from "dotenv";
 import { pool } from "./db.js";
 import path from 'path';
+import { exceptionHandler } from "./utils/errorHandler.js";
 
 const __dirname = path.resolve();
 
@@ -32,6 +33,7 @@ pool.on("error", function (err, client) {
 });
 
 
+app.use(exceptionHandler);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

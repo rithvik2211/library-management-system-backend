@@ -1,4 +1,5 @@
 import { pool } from "../db.js";
+import { AppError } from "../utils/customError.js";
 
 
 export const addNewCategory = async (data) => {
@@ -15,7 +16,7 @@ export const addNewCategory = async (data) => {
         return result;
 
     } catch (error) {
-        throw error;
+        throw new AppError('Db error', 400);
     }
 };
 export const getAllCategories = async (data) => {
@@ -33,6 +34,6 @@ export const getAllCategories = async (data) => {
         return result;
 
     } catch (error) {
-        throw error;
+        throw new AppError('Db error', 400);
     }
 };

@@ -1,6 +1,7 @@
 
 
 import { pool } from "../db.js";
+import { AppError } from "../utils/customError.js";
 
 export const getAllBooks = async (data) => {
 
@@ -11,7 +12,7 @@ export const getAllBooks = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw error;
+        throw new AppError('Db error', 400);
     }
 };
 export const addNewBook = async (data) => {
@@ -27,7 +28,8 @@ export const addNewBook = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw error;
+        throw new AppError('Db error', 400);
+
     }
 
 };
@@ -44,7 +46,7 @@ export const updateBook = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw error;
+        throw new AppError('Db error', 400);
     }
 
 };
@@ -78,7 +80,8 @@ export const getBookDetails = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw error;
+        throw new AppError('Db error', 400);
+
     }
 
 };

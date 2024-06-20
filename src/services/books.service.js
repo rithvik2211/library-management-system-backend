@@ -1,5 +1,6 @@
 
 import { addNewBook, deleteBook, getAllBooks, getBookDetails, updateBook } from "../query/books.query.js";
+import { AppError } from "../utils/customError.js";
 
 
 export const getAllBookService = async (body) => {
@@ -10,6 +11,7 @@ export const getAllBookService = async (body) => {
             data: result.rows,
             count: result.rowCount
         };
+        if (data.count == 0) throw new AppError('No data found', 404);
         return data;
 
     } catch (error) {
@@ -40,6 +42,7 @@ export const updateBookService = async (body) => {
             data: result.rows,
             count: result.rowCount
         };
+        if (data.count == 0) throw new AppError('No book with this id found', 404);
         return data;
     } catch (error) {
         throw error;
@@ -54,6 +57,7 @@ export const deleteBookService = async (body) => {
             data: result.rows,
             count: result.rowCount
         };
+        if (data.count == 0) throw new AppError('No data found', 404);
         return data;
     } catch (error) {
         throw error;
@@ -67,6 +71,8 @@ export const getBookDetailsService = async (body) => {
             data: result.rows,
             count: result.rowCount
         };
+        if (data.count == 0) throw new AppError('No data found', 404);
+
         return data;
     } catch (error) {
         throw error;
