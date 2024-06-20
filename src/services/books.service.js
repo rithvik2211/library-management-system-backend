@@ -1,5 +1,5 @@
 
-import { addNewBook, deleteBook, getAllBooks, updateBook } from "../query/books.query.js";
+import { addNewBook, deleteBook, getAllBooks, getBookDetails, updateBook } from "../query/books.query.js";
 
 
 export const getAllBookService = async (body) => {
@@ -50,6 +50,19 @@ export const deleteBookService = async (body) => {
     try {
         const { id } = body;
         const result = await deleteBook({ id });
+        const data = {
+            data: result.rows,
+            count: result.rowCount
+        };
+        return data;
+    } catch (error) {
+        throw error;
+    }
+};
+export const getBookDetailsService = async (body) => {
+    try {
+        const { id } = body;
+        const result = await getBookDetails({ id });
         const data = {
             data: result.rows,
             count: result.rowCount

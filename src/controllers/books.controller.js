@@ -1,15 +1,31 @@
-import { addNewBookService, deleteBookService, getAllBookService, updateBookService } from "../services/books.service.js";
+import { addNewBookService, deleteBookService, getAllBookService, getBookDetailsService, updateBookService } from "../services/books.service.js";
 
 
 
 export const getAllBooksController = async (req, res, next) => {
     try {
-        const body = req.query;
+        // const body = req.query;
 
-        const result = await getAllBookService(body);
+        const result = await getAllBookService();
         return res.status(200).json({
             success: true,
             message: "Books from collection are:",
+            length: result.count,
+            data: result.data
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
+export const getBookDetailsController = async (req, res, next) => {
+    try {
+        const body = req.body;
+
+        const result = await getBookDetailsService(body);
+        return res.status(200).json({
+            success: true,
+            message: "Book details are:",
             length: result.count,
             data: result.data
         });

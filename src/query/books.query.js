@@ -14,7 +14,6 @@ export const getAllBooks = async (data) => {
         throw error;
     }
 };
-
 export const addNewBook = async (data) => {
 
     try {
@@ -56,6 +55,23 @@ export const deleteBook = async (data) => {
 
         const query = {
             text: "DELETE FROM books WHERE id=$1",
+            values: [id]
+        };
+
+        const result = await pool.query(query);
+        return result;
+    } catch (error) {
+        throw error;
+    }
+
+};
+export const getBookDetails = async (data) => {
+
+    try {
+        const { id } = data;
+
+        const query = {
+            text: "SELECT * FROM books WHERE id=$1",
             values: [id]
         };
 
