@@ -16,7 +16,7 @@ export const addNewCategory = async (data) => {
         return result;
 
     } catch (error) {
-        throw new AppError('Db error', 400);
+        throw new AppError('Db error', 500);
     }
 };
 export const getAllCategories = async (data) => {
@@ -34,6 +34,6 @@ export const getAllCategories = async (data) => {
         return result;
 
     } catch (error) {
-        throw new AppError('Db error', 400);
+        throw new AppError('Db error', 500);
     }
 };

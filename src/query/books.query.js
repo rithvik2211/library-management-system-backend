@@ -12,7 +12,7 @@ export const getAllBooks = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw new AppError('Db error', 400);
+        throw new AppError('Db error', 500);
     }
 };
 export const addNewBook = async (data) => {
@@ -28,7 +28,14 @@ export const addNewBook = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw new AppError('Db error', 400);
+
+
+        if (error.code === '23505') {
+            throw new AppError('Title already exists', 409);
+        } else {
+            throw new AppError('Db error', 500);
+        }
+
 
     }
 
@@ -46,7 +53,7 @@ export const updateBook = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw new AppError('Db error', 400);
+        throw new AppError('Db error', 500);
     }
 
 };
@@ -80,7 +87,7 @@ export const getBookDetails = async (data) => {
         const result = await pool.query(query);
         return result;
     } catch (error) {
-        throw new AppError('Db error', 400);
+        throw new AppError('Db error', 500);
 
     }
 
