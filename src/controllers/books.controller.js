@@ -4,7 +4,7 @@ import { addNewBookService, deleteBookService, getAllBookService, getBookDetails
 
 export const getAllBooksController = async (req, res, next) => {
     try {
-        const body = req.body;
+        const body = req.query;
 
         const result = await getAllBookService(body);
         return res.status(200).json({
