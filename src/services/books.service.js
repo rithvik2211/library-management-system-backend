@@ -6,10 +6,10 @@ import { AppError } from "../utils/customError.js";
 export const getAllBookService = async (body) => {
 
     try {
-        let { title, author, limit, page } = body;
+        let { title, limit, page } = body;
         let offset = 0;
         if (!title) title = '';
-        if (!author) author = '';
+        let author = title;
         if (!limit) limit = 12;
         if (!offset) offset = 0;
 
