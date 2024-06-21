@@ -6,15 +6,16 @@ import { AppError } from "../utils/customError.js";
 export const getAllBookService = async (body) => {
 
     try {
-        let { title, limit, page } = body;
+        let { title, author, limit, page } = body;
         let offset = 0;
         if (!title) title = '';
+        if (!author) author = '';
         if (!limit) limit = 12;
         if (!offset) offset = 0;
 
         offset = page * limit;
 
-        const result = await getAllBooks({ title, limit, offset });
+        const result = await getAllBooks({ title, author, limit, offset });
         const data = {
             data: result.rows,
             count: result.rowCount

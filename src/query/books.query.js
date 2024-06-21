@@ -6,10 +6,10 @@ import { AppError } from "../utils/customError.js";
 export const getAllBooks = async (data) => {
 
     try {
-        let { title, limit, offset } = data;
+        let { title, author, limit, offset } = data;
 
         const query = {
-            text: `SELECT * FROM BOOKS WHERE title LIKE '%${title}%' LIMIT ${limit} OFFSET ${offset};`,
+            text: `SELECT * FROM BOOKS WHERE title LIKE '%${title}%' OR author LIKE '%${author}%' LIMIT ${limit} OFFSET ${offset};`,
         };
         // console.log(query);
 
