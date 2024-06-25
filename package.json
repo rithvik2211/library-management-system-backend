@@ -2,7 +2,7 @@
   "name": "library_management",
   "version": "1.0.0",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "./src/server.js",
   "scripts": {
     "start": "nodemon server.js",
